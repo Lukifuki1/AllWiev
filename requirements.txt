@@ -7,5 +7,5 @@ fire==0.5.0
 python-dotenv==0.21.1
 pycountry==22.3.5
 clarifai_grpc==8.8.0
-opencv-python==4.7.0.68
+opencv-python==4.13.0.90
 PySimpleGUI==4.60.5
