@@ -11,6 +11,11 @@ import cv2
 MODEL_DIR = os.path.join(os.path.dirname(os.path.realpath(__file__)), "places")
 
 
+class PlacesModelNotFoundError(Exception):
+    """Custom exception raised when Places model files are not found or cannot be loaded."""
+    pass
+
+
 def get_path(filename):
     return os.path.join(MODEL_DIR, filename)
 
@@ -116,62 +121,79 @@ def load_model(hook_feature):
 
     model_file = "wideresnet18_places365.pth.tar"
     model_path = os.path.join(MODEL_DIR, model_file)
-    if not os.access(model_path, os.W_OK):
-        download_file(
-            "http://places2.csail.mit.edu/models_places364/" + model_file, model_path
-        )
-        download_file(
-            "https://raw.githubusercontent.com/csailvision/places365/master/wideresnet.py",
-            os.path.join(MODEL_DIR, "wideresnet.py"),
-        )
+    
+    # Check if model file exists and is accessible
+    if not os.path.exists(model_path):
+        try:
+            print(f"Model file not found, downloading: {model_path}")
+            download_file(
+                "http://places2.csail.mit.edu/models_places364/" + model_file, model_path
+            )
+            download_file(
+                "https://raw.githubusercontent.com/csailvision/places365/master/wideresnet.py",
+                os.path.join(MODEL_DIR, "wideresnet.py"),
+            )
+        except Exception as e:
+            raise PlacesModelNotFoundError(f"Failed to download Places model files: {str(e)}")
+    elif not os.access(model_path, os.R_OK):
+        raise PlacesModelNotFoundError(f"Model file exists but is not readable: {model_path}")
 
     # import wideresnet
-    from places import wideresnet
+    try:
+        from places import wideresnet
+    except ImportError as e:
+        raise PlacesModelNotFoundError(f"Failed to import Places model dependencies: {str(e)}")
 
-    model = wideresnet.resnet18(num_classes=365)
-    checkpoint = torch.load(
-        get_path(model_file), map_location=lambda storage, loc: storage
-    )
-    state_dict = {
-        str.replace(k, "module.", ""): v for k, v in checkpoint["state_dict"].items()
-    }
-    model.load_state_dict(state_dict)
+    try:
+        model = wideresnet.resnet18(num_classes=365)
+        checkpoint = torch.load(
+            get_path(model_file), map_location=lambda storage, loc: storage
+        )
+        state_dict = {
+            str.replace(k, "module.", ""): v for k, v in checkpoint["state_dict"].items()
+        }
+        model.load_state_dict(state_dict)
 
-    # hacky way to deal with the upgraded batchnorm2D and avgpool layers...
-    for i, (name, module) in enumerate(model._modules.items()):
-        recursion_change_bn(model)
-    model.avgpool = torch.nn.AvgPool2d(kernel_size=14, stride=1, padding=0)
-    model.eval()
-    # hook the feature extractor
-    features_names = ["layer4", "avgpool"]  # this is the last conv layer of the resnet
-    for name in features_names:
-        model._modules.get(name).register_forward_hook(hook_feature)
-    return model
+        # hacky way to deal with the upgraded batchnorm2D and avgpool layers...
+        for i, (name, module) in enumerate(model._modules.items()):
+            recursion_change_bn(model)
+        model.avgpool = torch.nn.AvgPool2d(kernel_size=14, stride=1, padding=0)
+        model.eval()
+        # hook the feature extractor
+        features_names = ["layer4", "avgpool"]  # this is the last conv layer of the resnet
+        for name in features_names:
+            model._modules.get(name).register_forward_hook(hook_feature)
+        return model
+    except Exception as e:
+        raise PlacesModelNotFoundError(f"Failed to load Places model: {str(e)}")
 
 
 class Places:
     def __init__(self):
-        # load the labels
-        (
-            self.classes,
-            self.labels_IO,
-            self.labels_attribute,
-            self.W_attribute,
-        ) = load_labels()
+        try:
+            # load the labels
+            (
+                self.classes,
+                self.labels_IO,
+                self.labels_attribute,
+                self.W_attribute,
+            ) = load_labels()
 
-        # load the model
-        self.features_blobs = []
-        self.model = load_model(
-            lambda module, input, output: self.hook_feature(module, input, output)
-        )
+            # load the model
+            self.features_blobs = []
+            self.model = load_model(
+                lambda module, input, output: self.hook_feature(module, input, output)
+            )
 
-        # load the transformer
-        self.tf = returnTF()  # image transformer
+            # load the transformer
+            self.tf = returnTF()  # image transformer
 
-        # get the softmax weight
-        self.params = list(self.model.parameters())
-        self.weight_softmax = self.params[-2].data.numpy()
-        self.weight_softmax[self.weight_softmax < 0] = 0
+            # get the softmax weight
+            self.params = list(self.model.parameters())
+            self.weight_softmax = self.params[-2].data.numpy()
+            self.weight_softmax[self.weight_softmax < 0] = 0
+        except Exception as e:
+            raise PlacesModelNotFoundError(f"Failed to initialize Places class: {str(e)}")
 
     def hook_feature(self, module, input, output):
         self.features_blobs.append(np.squeeze(output.data.cpu().numpy()))
