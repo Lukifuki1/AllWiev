@@ -1,4 +1,4 @@
-# scan-for-webcams :camera:
+
 
 ![scan-for-webcamBanner](./.github/scan-for-webcamBanner.png)
 
