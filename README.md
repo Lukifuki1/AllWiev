@@ -1,85 +1,83 @@
+# AllWiev :camera:
 
+![AllWievBanner](./.github/AllWievBanner.png)
 
-![scan-for-webcamBanner](./.github/scan-for-webcamBanner.png)
-
-![PyPI - License](https://img.shields.io/pypi/l/scan-for-webcams?style=flat-square)
+![PyPI - License](https://img.shields.io/pypi/l/AllWiev?style=flat-square)
 [![Discord server invite](https://discordapp.com/api/guilds/974876463797006356/embed.png)](https://discord.gg/JCepvsHNqW)
 
 [中文文档](/zh/README.md)
 
-## Note
-I switched to a new method of [installing](#Installation) this program 
-for a better developer experience and better modifiability.
+## Opomba
+Prešel sem na novo metodo [namestitve](#Namestitev) tega programa
+za boljšo izkušnjo razvijalcev in boljšo prilagodljivost.
 
-As a result, the PYPI package `scan-for-webcams` is not maintained anymore, and 
-should be considered deprecated.
+Kot rezultat, PYPI paket `AllWiev` ni več vzdrževan in
+bi moral biti smatrano za zastarelega.
 
-btw: we have a discord channel ! [join](https://discord.gg/JCepvsHNqW)
+btw: imamo tudi Discord kanal! [Pridruži se](https://discord.gg/JCepvsHNqW)
 
-## Table of contents
-
-- [Note](#note)
-- [Table of contents](#table-of-contents)
-- [Usage](#usage)
-- [Installation](#installation)
-- [Experimental Vision-Language Model Support](#experimental-vision-language-model-support)
-- [Places365: On device footage classification](#places365-on-device-footage-classification)
-- [Graphical User Interface](#graphical-user-interface)
+## Vsebina
+- [Opomba](#opomba)
+- [Vsebina](#vsebina)
+- [Uporaba](#uporaba)
+- [Namestitev](#namestitev)
+- [Podpora za eksperimentalne modeli vidnega jezika](#podpora-za-eksperimentalne-modeli-vidnega-jezika)
+- [Places365: Klasifikacija posnetkov na napravi](#places365-klasifikacija-posnetkov-na-napravi)
+- [Grafični vmesnik](#graficni-vmesnik)
 - [Demo](#demo)
 
-## Usage
+## Uporaba
 
-* `python sfw search MJPG` : for public [MJPG streamers](https://github.com/jacksonliam/mjpg-streamer)
+* `python sfw search MJPG` : za javne [MJPG streamere](https://github.com/jacksonliam/mjpg-streamer)
 
-* `python sfw search webcamXP` : for public [webcamXP streamers](http://www.webcamxp.com/)
+* `python sfw search webcamXP` : za javne [webcamXP streamere](http://www.webcamxp.com/)
 
-* `python sfw search yawCam`: for public [yawCam steamers](https://www.yawcam.com/)
+* `python sfw search yawCam`: za javne [yawCam streamere](https://www.yawcam.com/)
 
-* `python sfw search hipcam`: for public hipcam streamers
+* `python sfw search hipcam`: za javne hipcam streamere
 
-* `python sfw search rtsp`: **DANGER** searches for rtsp servers on shodan, and performs enumeration on them to try and find streams
+* `python sfw search rtsp`: **NEVARNO** išče rtsp strežnike na shodanu in izvaja enumeracijo na njih, da bi poiskal pretoke
 
+* `python sfw play {url}`: predvaja pretok kamere
+  * za `rtsp://` pretoke, sfw bo predvajal v grafičnem pregledovalniku (glej `sfw/rtsp.py`)
+  * za vse druge pretoke, sfw bo odprl v privzetem brskalniku.
 
-* `python sfw play {url}`: plays the camera stream
-  * for `rtsp://` streams, sfw will play it in a GUI viewer (see `sfw/rtsp.py`)
-  * for all other streams, sfw will open it in the default browser.
+* `python sfw search ... --gui`: prikaže preiskane kamere v mreži vizualno.
 
-* `python sfw search ... --gui`: displays the scanned cameras in a grid visually.
+* `python sfw search --help`: za več možnosti in pomoč
 
-* `python sfw search --help`: for more options and help
+Program bo izpisal seznam povezav z obliko `ip_naslov:vrata`, in opise slike pod njo.
 
-The program will output a list of links with the format of `ip_address:port`, and descriptions of the image beneath it.
+Če vaš terminal podpira povezave, kliknite povezavo in jo odprite v brskalniku, sicer kopirajte povezavo in jo odprite v brskalniku.
 
-If your terminal supports links, click the link and open it in your browser, otherwise, copy the link and open it in your browser.
+## Namestitev
+1. Klonirajte to repozitorij: `git clone https://github.com/Lukifuki1/AllWiev`
 
-## Installation
-1. Clone this repository: `git clone https://github.com/JettChenT/scan-for-webcams`
+2. namestite requirements.txt: `pip install -r requirements.txt`
 
-2. install requirements.txt: `pip install -r requirements.txt`
+3. nastavite shodan:
+   pojdite na [shodan.io](https://shodan.io), registrirajte se/prijavite in pridobite vaš API ključ
 
-3. set up shodan:
-   go to [shodan.io](https://shodan.io), register/log in and grab your API key
+4. nastavite clarifai:
+   pojdite na [clarifai.com](https://clarifai.com), registrirajte se/prijavite, ustvarite aplikacijo in pridobite vaš API ključ.
+   Alternativno, uporabite lokalni [places365](#places365-klasifikacija-posnetkov-na-napravi) model.
 
-4. set up clarifai:
-   go to [clarifai.com](https://clarifai.com), register/log in, create an application and grab your API key.
-   Alternatively, use the local [places365](#places365-on-device-footage-classification) model.
-
-5. setup geoip:
-   go to [geo.ipify.org](https://geo.ipify.org), register/log in and grab your API key
+5. nastavite geoip:
+   pojdite na [geo.ipify.org](https://geo.ipify.org), registrirajte se/prijavite in pridobite vaš API ključ
    
-6. Add API keys:
-   1. run `python sfw setup`
-   2. enter your shodan, clarifai and geoip API keys
+6. Dodajte API ključe:
+   1. zaženite `python sfw setup`
+   2. vnesite vaše shodan, clarifai in geoip API ključe
 
-And then you can [run](#Usage) the program!
+In nato lahko [zaženete](#uporaba) program!
 
-## Experimental Vision Language Model Support
-We are working on supporting generating descriptions for footages
-via vision language models, which can generate descriptions for images in 
-natural language, instead of just tags, and can run on-device.
-Currently, we support a `llama.cpp` based `llava 7b` model.
+## Podpora za eksperimentalne modeli vidnega jezika
+Delamo na podpori za generiranje opisov posnetkov
+preko modelov vidnega jezika, ki lahko generirajo opise slik v naravnem jeziku,
+namesto le oznak, in se lahko izvajajo na napravi.
+Trenutno podpiramo `llama.cpp` osnovan `llava 7b` model.
 
-To use this, run the following commands:
+Za uporabo, zaženite naslednje ukaze:
 
 ```shell
 pip install -U --no-cache-dir llama-cpp-python@git+https://github.com/damian0815/llama-cpp-python/@4ec35390d72faba70942b9605dfcbde2bda0bdad
@@ -87,29 +85,29 @@ pip install huggingface_hub wurlitzer
 python sfw search webcamXP --vllm=True --parallel=False # or any other search command with the latter two flags
 ```
 
-Note: our current VLLM integration is experimental, and may not work as expected. 
-Parallel mode must be disabled for VLLM as of now.
+Opomba: naša trenutna integracija VLLM je eksperimentalna in morda ne bo delovala kot pričakovano. 
+Vključno z zdajšnjo podporo za vzporedni način, mora biti onemogočen za VLLM.
 
-## Places365: On device footage classification
-It is now possible to run [the Places365 model](https://github.com/CSAILVision/places365),
-a model fined tuned for real world locations,
-to get information about webcam footage.
+## Places365: Klasifikacija posnetkov na napravi
+Zdaj je mogoče zagnati [Places365 model](https://github.com/CSAILVision/places365),
+model prilagojen za realna mesta,
+da bi dobili informacije o posnetkih kamero.
 
-To use this model, you need to install the following packages:
+Za uporabo tega modela, morate namestiti naslednje pakete:
 ```bash
 pip install -r requirements-places.txt
 ```
 
-Then, you can run the program with the `--places` flag:
+Nato lahko zaženete program z zastavico `--places`:
 ```
 python sfw search MJPG --tag=False --places
 ```
 
-The model will take some time to download, and will be cached for future use.
+Model bo trajal nekaj časa za prenos in bo predpomnjen za prihodnjo uporabo.
 
-## Graphical User Interface
+## Grafični vmesnik
 
-To get a display of the live streams of all the scanned webcams, simply append the `--gui` option to your command.
+Za prikaz živih pretokov vseh preiskanih kamero, preprosto dodajte možnost `--gui` k vaši ukazni vrstici.
 
 ## Demo
 
