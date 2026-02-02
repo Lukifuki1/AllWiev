@@ -1,45 +1,45 @@
-# scan-for-webcams :camera:
+# AllWiev :camera:
 
-自动探测可公开访问的网络摄像头
+Iskanje javno dostopnih spletnih kamer
 
 [English docs](../README.md)
 
-## 目录
+## Vsebina
 
-- [使用方法](#Usage)
-- [下载安装](#Installation)
-- [演示](#Demo)
+- [Uporaba](#uporaba)
+- [Namestitev](#namestitev)
+- [Demo](#demo)
 
-## 使用方法
+## Uporaba
 
-- `python MJPG.py` : 用来探测公开的 [MJPG 播放器](https://github.com/jacksonliam/mjpg-streamer)
+- `python sfw search MJPG` : za iskanje javnih [MJPG predvajalnikov](https://github.com/jacksonliam/mjpg-streamer)
 
-- `python webcamXP.py` : 用来检测公开的 [webcamXP 播放器](http://www.webcamxp.com/)
+- `python sfw search webcamXP` : za iskanje javnih [webcamXP predvajalnikov](http://www.webcamxp.com/)
 
-程序会输出一列地址，格式如： `ip_address:port`
+Program bo izpisal seznam naslovov z obliko: `ip_naslov:vrata`
 
-如果您的终端支持链接，请单击该链接并在浏览器中将其打开，否则，请复制该链接并在浏览器中将其打开。
+Če vaš terminal podpira povezave, kliknite povezavo in jo odprite v brskalniku, sicer kopirajte povezavo in jo odprite v brskalniku.
 
-## 下载装
+## Namestitev
 
-1. clone&cd 进这个repo:
+1. Klonirajte in vstopite v repozitorij:
 
-    `git clone https://github.com/JettChenT/scan-for-webcams;cd scan-for-webcams`
+    `git clone https://github.com/Lukifuki1/AllWiev;cd AllWiev`
 
-2. 安装要求：
+2. Namestite zahteve:
 
     `pip install -r requirements.txt`
 
-3. 设立 shodan 服务：
+3. Nastavite storitev shodan:
 
-    1. 前往 [shodan.io](https://shodan.io), 注册并登陆进去，然后获得你的 API 密钥
+    1. Pojdite na [shodan.io](https://shodan.io), registrirajte se in prijavite se, nato pridobite vaš API ključ
 
-    2. 设置环境变量  `SHODAN_API_KEY` 为你的 `API 密钥`:
+    2. Nastavite spremenljivko okolja `SHODAN_API_KEY` na vaš `API ključ`:
 
-        `export "SHODAN_API_KEY"="<你的API密钥>"`
+        `export "SHODAN_API_KEY"="<vaš API ključ>"`
 
-然后就可以运行程序了！
+Nato lahko zaženete program!
 
-## 演示
+## Demo
 
 [](https://asciinema.org/a/349819)![asciicast](https://asciinema.org/a/349819.svg)

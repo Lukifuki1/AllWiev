@@ -1,76 +1,74 @@
-# Contributor Covenant Code of Conduct
+# Pogodba o vedenju za sodelavce
 
-## Our Pledge
+## Naša zaveza
 
-In the interest of fostering an open and welcoming environment, we as
-contributors and maintainers pledge to making participation in our project and
-our community a harassment-free experience for everyone, regardless of age, body
-size, disability, ethnicity, sex characteristics, gender identity and expression,
-level of experience, education, socio-economic status, nationality, personal
-appearance, race, religion, or sexual identity and orientation.
+Zaradi spodbujanja odprtega in vključujočega okolja, kot sodelavci in vzdrževalci, se zavezujeva, da bo sodelovanje v našem projektu in naši skupnosti brez nadlegovanja za vse, ne glede na starost, telo
+velikost, invalidnost, etnično pripadnost, spolne lastnosti, spolno identiteto in izraz, 
+raven izkušenj, izobrazbe, socio-ekonomski status, državljanstvo, osebni
+videz, rasa, religija, ali spolno identiteto in usmerjenost.
 
-## Our Standards
+## Naši standardi
 
-Examples of behavior that contributes to creating a positive environment
-include:
+Primeri vedenja, ki prispevajo k ustvarjanju pozitivnega okolja
+vključujejo:
 
-* Using welcoming and inclusive language
-* Being respectful of differing viewpoints and experiences
-* Gracefully accepting constructive criticism
-* Focusing on what is best for the community
-* Showing empathy towards other community members
+* Uporaba dobrodošle in vključujoče jezika
+* Spoštovanje različnih vidikov in izkušenj
+* Umereno sprejemanje konstruktivne kritike
+* Osredotočanje na to, kar je najboljše za skupnost
+* Pokazovanje empatije do drugih članov skupnosti
 
-Examples of unacceptable behavior by participants include:
+Primeri neprikladnega vedenja sodelavcev vključujejo:
 
-* The use of sexualized language or imagery and unwelcome sexual attention or
- advances
-* Trolling, insulting/derogatory comments, and personal or political attacks
-* Public or private harassment
-* Publishing others' private information, such as a physical or electronic
- address, without explicit permission
-* Other conduct which could reasonably be considered inappropriate in a
- professional setting
+* Uporaba spolno označenega jezika ali slik in neželeno spolno pozornost ali
+ napade
+* Troljanje, žaljivi/derogatorni komentarji, ter osebni ali politični napadi
+* Javno ali zasebno nadlegovanje
+* Objavljanje zasebnih informacij drugih, kot so fizični ali elektronski
+ naslov, brez izrecnega dovoljenja
+* Drugo vedenje, ki bi bilo razumno smatrano za neprikladno v
+ profesionalnem okolju
 
-## Our Responsibilities
+## Naše odgovornosti
 
-Project maintainers are responsible for clarifying the standards of acceptable
-behavior and are expected to take appropriate and fair corrective action in
-response to any instances of unacceptable behavior.
+Vzdrževalci projekta so odgovorni za pojasnitev standardov sprejemljivega
+vedenja in pričakuje se, da bodo sprejeli primerno in pravično korektivno dejanje v
+odziv na katerekoli primere neprikladnega vedenja.
 
-Project maintainers have the right and responsibility to remove, edit, or
-reject comments, commits, code, wiki edits, issues, and other contributions
-that are not aligned to this Code of Conduct, or to ban temporarily or
-permanently any contributor for other behaviors that they deem inappropriate,
-threatening, offensive, or harmful.
+Vzdrževalci projekta imajo pravico in odgovornost, da odstranijo, uredijo ali
+zavržejo komentarje, prispevke, kodo, wiki urejanja, težave in druge prispevke
+ki niso usklajeni s to Pogodbo o vedenju, ali da začasno ali
+trajno prepovejo katerikoli sodelavec zaradi drugega vedenja, ki ga smatrajo za neprikladno,
+grozilno, žaljivo ali škodljivo.
 
-## Scope
+## Obseg
 
-This Code of Conduct applies both within project spaces and in public spaces
-when an individual is representing the project or its community. Examples of
-representing a project or community include using an official project e-mail
-address, posting via an official social media account, or acting as an appointed
-representative at an online or offline event. Representation of a project may be
-further defined and clarified by project maintainers.
+Ta Pogodba o vedenju velja tako znotraj prostorov projekta kot v javnih prostorih
+ko posameznik predstavlja projekt ali njegovo skupnost. Primeri predstavljanja
+projekta ali skupnosti vključujejo uporabo uradnega e-poštnega naslova projekta,
+objavljanje prek uradnega računa v socialnih omrežjih ali delovanje kot imenovani
+predstavnik na spletnem ali brez povezave dogodku. Predstavitev projekta se lahko
+dodatno določi in pojasni s strani vzdrževalcev projekta.
 
-## Enforcement
+## Uveljavljanje
 
-Instances of abusive, harassing, or otherwise unacceptable behavior may be
-reported by contacting the project team at jettchen12345@gmail.com. All
-complaints will be reviewed and investigated and will result in a response that
-is deemed necessary and appropriate to the circumstances. The project team is
-obligated to maintain confidentiality with regard to the reporter of an incident.
-Further details of specific enforcement policies may be posted separately.
+Primeri zlorab, nadlegovanja ali drugo neprikladno vedenje se lahko prijavi
+s kontaktom ekipe projekta na jettchen12345@gmail.com. Vse
+pritožbe bodo pregledane in preučene ter bodo vodile do odziva, ki
+se smatra za potreben in primern za okoliščine. Ekipa projekta je
+zaveza, da ohrani zasebnost glede na prijavitelja incidenta.
+Dodatni podrobnosti o določenih politikah uveljavitve se lahko objavijo ločeno.
 
-Project maintainers who do not follow or enforce the Code of Conduct in good
-faith may face temporary or permanent repercussions as determined by other
-members of the project's leadership.
+Vzdrževalci projekta, ki ne sledijo ali ne uveljavljajo Pogodbe o vedenju v dobro
+vero, lahko podedujejo začasne ali trajne posledice, kot določijo drugi
+člani vodstva projekta.
 
-## Attribution
+## Priznanje
 
-This Code of Conduct is adapted from the [Contributor Covenant][homepage], version 1.4,
-available at https://www.contributor-covenant.org/version/1/4/code-of-conduct.html
+Ta Pogodba o vedenju je prilagojena iz [Contributor Covenant][homepage], različica 1.4,
+dostopna na https://www.contributor-covenant.org/version/1/4/code-of-conduct.html
 
 [homepage]: https://www.contributor-covenant.org
 
-For answers to common questions about this code of conduct, see
+Za odgovore na pogosta vprašanja o tej pogodbi o vedenju, glej
 https://www.contributor-covenant.org/faq
